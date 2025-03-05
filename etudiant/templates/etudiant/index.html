@@ -1,0 +1,52 @@
+{% extends 'etudiant/base.html' %}
+{% load static %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+<section>
+  <h1 class="container text-center">Gestion des Etudiants</h1>
+  <div class="container mt-4">
+    
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Age</th>
+          <th scope="col">Metier</th>
+          <th scope="col">Incrit</th>
+          <th scope="col">Details</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for etd in etudiant %}
+        <tr>
+          <td>{{ etd.prenom }}</td>
+          <td>{{ etd.nom }}</td>
+          <td>{{ etd.age }} ans</td>
+          <td>{{ etd.metier }}</td>
+          {% if etd.est_inscrit %}
+            <td>OUI</td>
+          {% else %}
+            <td>NON</td>
+          {% endif %}
+          
+
+          <td> <a href="{% url 'details' etd.id %}" class="btn btn-primary btn-sm">Voir détails</a></td>
+          <td> <a href="{% url 'modifier' etd.id %}" class="btn btn-success btn-sm">Modifier</a></td>
+          <td> <a href="{% url 'supprimer' etd.id %}" class="btn btn-danger btn-sm">Supprimer</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+  
+{% endblock %}
