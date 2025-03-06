@@ -30,6 +30,8 @@
           <td>{{ etd.nom }}</td>
           <td>{{ etd.age }} ans</td>
           <td>{{ etd.metier }}</td>
+
+          <!-- verifie si l'etudiant a bien inscrit -->
           {% if etd.est_inscrit %}
             <td>OUI</td>
           {% else %}

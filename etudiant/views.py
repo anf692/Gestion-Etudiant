@@ -7,6 +7,10 @@ def index(request):
     etudiant=Etudiant.objects.all().order_by('create_at')
     return render(request, 'etudiant/index.html',{'etudiant':etudiant})
 
+def blog(request):
+    etudiant=Etudiant.objects.all().order_by('create_at')
+    return render(request, 'etudiant/blog.html',{'etudiant':etudiant})
+
 def ajout_etudiant(request):
     if request.method == "POST":
         form = AjoutForm(request.POST)
@@ -35,6 +39,6 @@ def modifier_etudiant(request,id):
     return render(request, 'etudiant/modifier_etudiant.html', {'form': form})
 
 def Supprimer_etudiant(request,id):
-    etudiant=Etudiant.objects.get(id=id)
-    etudiant.delete()
-    redirect('index')
+    liste= Etudiant.objects.get(id=id)
+    liste.delete()
+    return redirect('index')

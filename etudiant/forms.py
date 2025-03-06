@@ -28,3 +28,4 @@ class AjoutForm(forms.ModelForm):
                 attrs={'class': 'form-check-input'}
                 ),
         }
+        
